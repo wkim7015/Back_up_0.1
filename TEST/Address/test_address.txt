@@ -1,0 +1,5 @@
+C:\Users\Hojin\Desktop\exp02
+C:\Users\Hojin\Desktop\exp1
+C:\Users\Hojin\Desktop\ 새 폴더
+C:\Users\Hojin\Desktop\remove_expire.pyc
+D:\Fakefiles.txt

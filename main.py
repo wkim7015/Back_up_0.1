@@ -24,54 +24,67 @@ from remove_function import remove_expire
 
 # Input parameters
 
-reportPath = ""
+reportName = "Errorreports.txt"
 
-directoryPath = "" 
+directoryPath = "C:\Users\Hojin\Desktop\\address.txt"
 
 # additional parameters
 
-drive = ""
+drive = "D:\\"
 
+
+folderName = drive+str(date.today())
+reportPath = folderName +"\\"+reportName
 if __name__ == "__main__":
     
     global reportPath
     global directoryPath
-    global drive
+    global drive6
+    global folderName
     
     try:
-        
+        #need to make the directory before make the text.
+        if not os.path.exists(folderName):
+            os.makedirs (folderName)
+
+        print reportPath
         text = text_log()
         text.make_report(reportPath)
-        
-        function_address = extract_address()
-        
+      
         text.initial(reportPath)
-        
-        address = function_address(directoryPath)
-        
-        ''' Copy the given directory
-        '''
-        counter = 0
-        while address[counter] is not None:
-            copy_folder(address, log_path, drive)
-            counter +=1
-            
-        ''' Remove the expired folders
-        '''
-        remove_expire()
-        
-        
-        # may need to check whether below lines are going to 
-        #executed, no matter of the errors.
+
         text.final(reportPath)
         text.success(reportPath)
-
+        
     except Exception as e:
         
-        print str(e)
         text.final(reportPath)
         
         text.failed(reportPath)
         
-        text.error(reportPath,str(e))
+        text.error(reportPath,str(e))    
+
+    finally:
+        
+        function_address = extract_address()
+        
+        address = function_address.main(open(directoryPath))
+        
+        ''' Copy the given directory
+        '''
+        counter = 0
+        print address
+        while counter < len(address) and address[counter] is not None:
+                
+            print counter
+            copy_folder(address[counter], reportPath, drive)
+            counter +=1
+            print counter 
+        ''' Remove the expired folders
+        '''
+        remove_expire(drive)
+        
+        
+        # may need to check whether below lines are going to 
+        #executed, no matter of the errors. >used "finally"
         

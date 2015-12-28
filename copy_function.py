@@ -14,10 +14,9 @@ import string
 from distutils.dir_util import mkpath
 from distutils.errors import DistutilsFileError
 from distutils.file_util import copy_file
-from text_log import *
 from mhlib import PATH
 
-#copy_folder(TEXTlog=None).folder_copy(TEXTdirectory)? >>may be in the future
+#copy_folder(TEXTlog=None).folder_copy(TEXTdirectory)?
 # TEXTlog is only activated when TEXTlog parameter is given
 
 '''
@@ -41,12 +40,31 @@ quota:
 9) 공백의 사용이 일정하지 않습니다. = ( ) 등의 부호에 앞뒤로 사용되는 공백(space)를 규칙있게 통일해주세요. 공백이 2개인곳은 1개로 변경해주세요.
 '''
 
+'''
+2.5 ": copy_tree version
+"""Copy an entire directory tree 'src' to a new location 'dst'.
+    Both 'src' and 'dst' must be directory names.  If 'src' is not a
+    directory,  raise DistutilsFileError.  If 'dst' does not exist,  it is
+    created with 'mkpath()'.  The end result of the copy is that every
+    file in 'src' is copied to 'dst',  and directories under 'src' are
+    recursively copied to 'dst'.  Return the list of files that were
+    copied or might have been copied,  using their output name.  The
+    return value is unaffected by 'update' or 'dry_run': it is simply
+    the list of all files under 'src',  with the names changed to be
+    under 'dst'.
+    'preserve_mode' and 'preserve_times' are the same as for
+    'copy_file'; note that they only apply to regular files,  not to
+    directories.  If 'preserve_symlinks' is true,  symlinks will be
+    copied as symlinks (on platforms that support them!); otherwise
+    (the default),  the destination of the symlink will be copied.
+    'update' and 'verbose' are the same as for 'copy_file'.
+'''
 
 class copy_folder():
     
     #2) ", " 다음 항상 공백(space)를 넣으세요 ()
     
-    log = text_log ()
+    #log = text_log ()
     
     def __init__(self, directory_path, log_path, drive):
         
@@ -87,14 +105,8 @@ class copy_folder():
         ''' 저장되는 디렉토리는 LOG 의 주소를 따름.
         '''
         
-        '''So,  it is important to bring the certain level of the drive 
-            to the parameter. As we have file names,  how can we modify 
-            the drive without any penalties? >> another name for the drive
-        '''
-       
-        name = path[path.rfind("\\") +1:len(path)]
-           #new_directory to toDirectory
-           
+        name = path[path.rfind("\\") +1:len(path)].replace(":","")
+           #new_directory to toDirectory      
         propeRdrive = self._drive_correction(drive)
         new_directory = propeRdrive+str(date.today()) + "\\" + name
         if not os.path.exists(new_directory):

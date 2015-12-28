@@ -4,25 +4,37 @@ from log import log
 from datetime import *
 class text_log():
     
+
+    #drive = ''
+    #name = ''
+    #fileExtension = ''
+    #directory = ''
+    #TEXT = ''
+    
     @staticmethod
     def get_current_time():
         
         ''' Find the date in which operation performs
         '''
         return datetime.now()
-        
+    
+    
+    
     def make_report(self,text):
+        
+
     
         s = unicode_conversion(text)
         print s
         open(unicode_conversion(s),'w')
    
+
     def _open_report(self,text):
         
         return open(text,'a')
     
+  
     def initial(self,text):
-    
         '''all of initial writing:  1. the name of the address used
                                     2. today's date
                                     3.  error report name
@@ -35,7 +47,8 @@ class text_log():
         report.write(unicode_conversion("\t\n사용한 텍스트 파일 주소:\t")+self.TEXT) 
         report.write(unicode_conversion("\n\n로그 시작한 시간:\t\t ")+str(startTime)+"\n")
         report.write(unicode_conversion("\n\n\t\t" +"\t백업 과정 보고서\n\n\n")) 
-
+        
+        #return startTime
     def final(self,text):
         
         ''' all of final writing:   1. whether it is succeeded or not
@@ -55,6 +68,8 @@ class text_log():
         '''
         report = self._open_report(text)
             
+    
+   
     def success(self,text):
         
         ''' all of success case     1. success indication
@@ -68,6 +83,9 @@ class text_log():
         report.write(unicode_conversion("코멘트\t\t\t\t"))
         report.write("\n")
         
+        
+        
+  
     def failed(self,text):
         
         '''all of failed case     1.  failure indication
@@ -81,8 +99,10 @@ class text_log():
         report.write(unicode_conversion("코멘트\t\t\t\t"))
         report.write("\n")
         
+        
+        
+
     def error(self,text,msg):
-    
         ''' write all of the errors into the log
         send the file to bug_database >>not implemented yet. > do we though?
         '''
@@ -91,12 +111,14 @@ class text_log():
         #write the errors to the report.
         report.write(unicode_conversion(msg) +"\n")
         
+    
+    
     @classmethod  
     def get_drive(cls): # left for just in case.
-       
         return cls.drive
     
 def unicode_conversion(string):
     return string.decode('cp949').encode('cp949')
 
     
+

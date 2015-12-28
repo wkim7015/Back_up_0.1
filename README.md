@@ -33,7 +33,9 @@ If they are protected or not found in the path, then the function will raise cor
 Problems:
 
 
-incompleted version of log-writing format :  will be patched n:ext version. 
+incompleted version of log-writing format :  will be patched next version. 
+
+the copy process stops when exception is raised: This can be fixed,only if I have permission to create personal copy_tree method by overriding the exceptions.
 
 Solved:
 

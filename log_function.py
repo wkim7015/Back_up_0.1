@@ -67,6 +67,8 @@ class text_log():
         
         '''
         report = self._open_report(text)
+        endTime = self.get_current_time()
+        report.write(unicode_conversion("\n최종시간:"+"\t"*2 +str(endTime))+"\n"*2)
             
     
    

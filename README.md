@@ -29,4 +29,11 @@ admin, it will raise associated error which will be passed to the main.
 
  This function is to copy all files in a given directory. 
 if they are protected or not found in the path, then the function will raise correspond errors
-	
+
+Problems:
+
+it cannot perform over the same folders again. > will be patched next version.
+
+incompleted version of log-writing format : will be patched next version. 
+
+

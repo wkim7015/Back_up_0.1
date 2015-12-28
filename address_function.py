@@ -52,5 +52,5 @@ class extract_address():
     def copy_address(self,path):		# None 과 빈 공간이 있을시에 주소만 받는 함수.
 
         if  not path == '' and not path is None and not path.isspace():
-            return path[0:len(path)-1] # 바뀜
+            return path.strip() # 바뀜
         else: return ''

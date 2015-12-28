@@ -19,16 +19,16 @@ admin, it will raise associated error which will be passed to the main.
 
 3. log function
 
- This function has required methods for writing a finalized error report in text format style</pre>
+ This function has required methods for writing a finalized error report in text format style.
 	
 4. address function
 
- This function formats and delivers directory paths to required functions
+ This function formats and delivers directory paths to required functions.
  
 5. copy function
 
  This function is to copy all files in a given directory. 
-if they are protected or not found in the path, then the function will raise correspond errors
+If they are protected or not found in the path, then the function will raise correspond errors.
 
 Problems:
 

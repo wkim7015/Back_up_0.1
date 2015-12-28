@@ -1,6 +1,6 @@
 #-*- coding: cp949 -*-
 import abc
-from log import log
+
 from datetime import *
 class text_log():
     
@@ -16,16 +16,15 @@ class text_log():
         
         ''' Find the date in which operation performs
         '''
-        return datetime.now()
+        return datetime.now().replace(second=0,microsecond=0)
     
     
     
     def make_report(self,text):
         
 
-    
+        
         s = unicode_conversion(text)
-        print s
         open(unicode_conversion(s),'w')
    
 
@@ -44,7 +43,7 @@ class text_log():
         report = self._open_report(text)
         startTime =self.get_current_time()
         report.write(str(date.today())+unicode_conversion("\t\t\t에러 리포트\n\n"))
-        report.write(unicode_conversion("\t\n사용한 텍스트 파일 주소:\t")+self.TEXT) 
+        report.write(unicode_conversion("\t\n사용한 텍스트 파일 주소:\t")+text) 
         report.write(unicode_conversion("\n\n로그 시작한 시간:\t\t ")+str(startTime)+"\n")
         report.write(unicode_conversion("\n\n\t\t" +"\t백업 과정 보고서\n\n\n")) 
         
@@ -81,7 +80,7 @@ class text_log():
         '''
         report = self._open_report(text)
         report.write(unicode_conversion("성공여부\t\t**"))
-        report.write(unicode_conversion('\t #!!복사 성공!!#'+ "\tX(\n"))
+        report.write(unicode_conversion('\t #!!복사 성공!!#'+ "\t:)\n"))
         report.write(unicode_conversion("코멘트\t\t\t\t"))
         report.write("\n")
         
@@ -118,9 +117,20 @@ class text_log():
     @classmethod  
     def get_drive(cls): # left for just in case.
         return cls.drive
+    @staticmethod
+    def isContain(self, text):
+
+        if unicode_conversion('실패') in open(text).read():
+            return True
+        else:
+            return False
+
+        
+ 
     
 def unicode_conversion(string):
     return string.decode('cp949').encode('cp949')
 
-    
+   
 
+    

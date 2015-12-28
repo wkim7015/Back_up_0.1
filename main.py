@@ -21,18 +21,19 @@ from address_function import extract_address
 from copy_function import copy_folder
 from log_function import text_log
 from remove_function import remove_expire
-
+import sys
 import gc
 # Input parameters
 
-reportName = "Errorreports.txt"
+reportName = "Errorreports.txt" #name of the file and the extension for a log
 
 directoryPath = "C:\Users\Hojin\Desktop\\address.txt"
 
 # additional parameters
 
-drive = "D:\\"
-
+drive = "F:\\"  #where do you want to save( directory path)
+if not os.path.exists(drive[0]+"\\"):
+    drive = ".\\"
 
 folderNameDate = drive+str(date.today())
 folderNameTime = drive +str(datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
@@ -71,23 +72,17 @@ if __name__ == "__main__":
             os.makedirs (folderName)
         else:
             folderName = folderNameTime
-            print str(folderName)
             flag = 1
             os.makedirs (folderName)
         reportPath = folderName +"\\"+reportName
         text = text_log()
         text.make_report(reportPath)
-      
         text.initial(reportPath)
-
-        text.success(reportPath)
-
-        text.final(reportPath)
 
         #dump_garbage()
     except Exception as e:
         
-        
+        print str(e)
         text.failed(reportPath)
         
         text.error(reportPath,str(e))
@@ -104,16 +99,18 @@ if __name__ == "__main__":
         '''
         counter = 0
         while counter < len(address) and address[counter] is not None:
-                
-            print counter
+
             copy_folder(address[counter], reportPath, drive,flag)
             counter +=1
-            print counter 
+  
         ''' Remove the expired folders
         '''
         remove_expire(drive)
         #dump_garbage()
-        
+        if(text.isContain(reportPath) is False):
+            text.success(reportPath)
+        text.final(reportPath)
+   
         
         # may need to check whether below lines are going to 
         #executed, no matter of the errors.
@@ -125,3 +122,5 @@ if __name__ == "__main__":
         
     
 
+
+#===============================================================================

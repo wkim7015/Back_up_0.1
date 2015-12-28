@@ -1,0 +1,170 @@
+#-*- coding: cp949 -*-
+
+import unittest
+from log_function import *
+from datetime import *
+import os.path
+import string
+import random
+
+
+def id_generator(size=6, chars=string.letters ):
+      return ''.join(random.choice(chars) )
+
+class TESTget_current_time(unittest.TestCase):
+    
+    def test_time(self):
+        time = datetime.now().replace(second=0, microsecond=0)
+        time_2 = text_log.get_current_time()
+        self.assertEqual(time,time_2)
+        
+def check_file(string):
+    
+    return os.path.isfile(string)
+
+def create_text_log(string):
+
+    text_log().make_report(string)
+
+def test_log(string):
+
+    create_text_log(string)
+
+    return check_file(string)
+
+    
+
+    
+class TESTmake_report_open_report(unittest.TestCase):
+      
+    path =  ("C:\\Users\\Hojin\\Desktop\\testfile.txt").decode('cp949').encode('cp949')
+    #path2 =  ("D:\\Users\\Hojin\\Desktop\\testfile.txt").decode('cp949').encode('cp949') #> 디렉토리가 없을시, 변환 불가능. open 에서 에러
+    path3 =  ("C:\\Users\\testfile.txt").decode('cp949').encode('cp949') # 만약 \\ 가 안될시? : eclipse 폴더 안에 저장됨
+    path4 =  ("C:\\Users\\Hojin\\Desktop\\될까?.txt").decode('cp949').encode('cp949') #민약 파일이름이 기호 일시 실험 >기호사용한 이름 파일 지원 불가능
+    path5 =  ("C:\\Users\\Hojin\\Desktop\\될까.txt") #만약 파일이름이 한국어 일때 실험 > 가능
+    String = ("C:\\Users\\Hojin\\Desktop\\testfiletxt") #Result: create the file without extension
+    capitalString = ("C:\\Users\\Hojin\\Desktop\\tEstFile2.tXT") # worked
+    backString = ("C:\Users\Hojin\Desktop\tEstFile3.tXT") #검사 완료
+    
+    def test_existence(self):# worked.
+        file2 = text_log().make_report(self.path3)
+        file_check1  = os.path.isfile(self.path3)
+        self.assertTrue(file_check1,msg = 'True')
+
+
+    def test_koreanfilename(self): #worked
+        file5 = text_log().make_report(self.path5)
+        file_check2 = os.path.isfile(self.path5)
+        self.assertTrue(file_check2,msg = 'True')
+
+
+    def test_existence2(self): #worked   
+
+        file1 = text_log().make_report(self.path)
+
+        file_check0 = os.path.isfile(self.path)
+        self.assertTrue(file_check0, msg='True')
+
+        
+    def test_extension_difference(self): 
+        T_file = text_log().make_report(self.String)
+        s = check_file(self.String)
+        self.assertTrue(s, msg = "True") 
+
+
+    def test_Capital_letter(self):
+        create_text_log(self.capitalString)
+        s = check_file(self.capitalString)
+        self.assertTrue(s,msg = "True")
+
+
+    def test_escapeString(self):
+        s = test_log(self.backString)
+        self.assertTrue(os.path.isfile("C:\Users\Hojin\Desktop\\tEstFile3.tXT"),msg = "True")
+          
+
+class TESTlog(unittest.TestCase):
+
+    path =("C:\\Users\\Hojin\\Desktop\\테스트파일.txt")
+    text = text_log()
+    textfile = text.make_report(path)
+
+    
+    def test_initial(self):
+
+        textfile = self.text.make_report(self.path)
+        os.remove(self.path)
+        self.text.initial(self.path) #manually checked
+        lines = [line.rstrip('굈').decode('cp949').encode('cp949') for line in open(self.path)]
+        check_lines = [str(date.today())+"\t\t\t에러 리포트\n","\n","\t\n",
+                       "사용한 텍스트 파일 주소:\t"+self.path+"\n","\n","로그 시작한 시간:\t\t "+str(datetime.now().replace(second=0, microsecond=0))+"\n","\n","\n",
+                       "\t\t" +"\t백업 과정 보고서\n","\n","\n"]
+        print set(lines)-set(check_lines)
+        self.assertEqual(lines,check_lines)
+
+    
+    def test_success(self):
+
+        text = text_log()
+        os.remove(self.path)
+        text.success(self.path)
+        
+        lines = [line.rstrip('굈').decode('cp949').encode('cp949') for line in open(self.path)]
+        check_lines = ["성공여부\t\t**\t #!!복사 성공!!#\t:)\n","코멘트\t\t\t\t\n"]
+
+        self.assertEqual(lines,check_lines)
+
+    
+    def test_failed(self):
+        text = text_log()
+        os.remove(self.path)
+        text.failed(self.path)
+        lines = [line.rstrip('굈').decode('cp949').encode('cp949') for line in open(self.path)]
+        check_lines = ["성공여부\t\t**\t #!!복사 실패!!#"+ "\tX(\n","코멘트\t\t\t\t\n"]
+        self.assertEqual(lines,check_lines)
+                                                        
+    def test_writeError(self):
+         text = text_log()
+         os.remove(self.path)
+         text.error(self.path, "에러입니다?#@!(*&^$@!#%^&")
+         lines = [line for line in open(self.path)]
+         check_lines=["에러입니다?#@!(*&^$@!#%^&"]
+         self.assertEqual(lines,check_lines)
+        
+class TESTfinal(unittest.TestCase):
+    
+    #가장 중요한 메인 함수 두개 검사.
+    
+    path_directory = "C:\Users\Hojin\Desktop\새 폴더 (2)\\"
+    N = 3000
+    F = 7000
+    text_log().make_report("C:\Users\Hojin\Desktop\새 폴더 (2)\error.txt")
+    path = "C:\Users\Hojin\Desktop\새 폴더 (2)\error.txt"
+
+
+    def test_make_reportfile(self):
+        
+        for i in range(0, self.N):
+             x = id_generator()
+             file2 = text_log().make_report(self.path_directory+x+".txt")
+             file_check1  = os.path.isfile(self.path_directory+x+".txt")
+             self.assertTrue(file_check1,msg = "True")
+
+    
+    def test_writeError(self):
+        
+        for i in range(0, self.F):
+            x = id_generator()
+            os.remove("C:\Users\Hojin\Desktop\새 폴더 (2)\error.txt")
+            text_log().make_report("C:\Users\Hojin\Desktop\새 폴더 (2)\error.txt")
+            text = text_log()
+            text.error(self.path, x)
+            lines = [line for line in open(self.path)]
+            check_lines=[x]
+            self.assertEqual(lines,check_lines)  
+
+             
+if __name__ == '__main__': 
+
+    unittest.main()
+        

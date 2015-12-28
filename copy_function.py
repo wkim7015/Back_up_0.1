@@ -66,7 +66,7 @@ class copy_folder():
     
     #log = text_log ()
     
-    def __init__(self, directory_path, log_path, drive):
+    def __init__(self, directory_path, log_path, drive,flag =0):
         
         #try: 
             self.path = directory_path
@@ -74,11 +74,11 @@ class copy_folder():
              #Use the txt log. May other classes will be implemented to ask
             #an opinion of the extensions.
             #log.make_report(log_path)>> do that in the main
-            self.copy_function(directory_path,  log_path, drive)
+            self.copy_function(directory_path,  log_path, drive,flag)
         #except Exception as e:
             #log.error(self.log_path, str(e))
 
-    def copy_function(self ,  path,  log_path, drive):
+    def copy_function(self ,  path,  log_path, drive,flag):
         
         #copy_function to copy_folder_function
 
@@ -89,7 +89,7 @@ class copy_folder():
             #print drive
             # the above implementation is only when log_path is null.
             # where it cannot be NULL. fix the "find" quote.
-            to_path = self.get_directory_address(path,  drive)
+            to_path = self.get_directory_address(path,  drive,flag)
             from_path = str(path)
             copy_tree(from_path, to_path)
             
@@ -97,7 +97,7 @@ class copy_folder():
             
             print ""
             
-    def get_directory_address(self, path, drive):
+    def get_directory_address(self, path, drive,flag):
         
         #3) get_directory_address 등의 파라메터로 넘어오는 드라이브가 "D"  혹은 "D:" 와 같을때 어찌 되는지 테스트를 추가하고,  해당 함수를 처리하세요 ()
         #> 공통점 : 첫글자는 드라이브.
@@ -108,7 +108,10 @@ class copy_folder():
         name = path[path.rfind("\\") +1:len(path)].replace(":","")
            #new_directory to toDirectory      
         propeRdrive = self._drive_correction(drive)
-        new_directory = propeRdrive+str(date.today()) + "\\" + name
+        if flag ==0:
+            new_directory = propeRdrive+str(date.today()) + "\\" + name
+        else:
+            new_directory = propeRdrive+str(datetime.now().strftime('%Y-%m-%d_%H-%M-%S')) + "\\" + name
         if not os.path.exists(new_directory):
             os.makedirs (new_directory)
         else: pass

@@ -32,7 +32,7 @@ If they are protected or not found in the path, then the function will raise cor
 
 Problems:
 
-it cannot perform over the same folders again. > will be patched next version.
+it cannot perform over the same folders again. > By using hour units, it can be repeated with a delay of second.
 
 incompleted version of log-writing format : will be patched next version. 
 

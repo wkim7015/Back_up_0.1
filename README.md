@@ -9,7 +9,7 @@ a whole given directory in to a specific directory from the input
 
 This function is to operate all available functions, and write raised errors to an error log, formatted to a txt file.
 
-This functions requires three inputs:an error report path,a directory path, and a drive which directory will be stored. 
+This functions requires three inputs:an error report path,a directory path, and a drive which directory will be stored. The error report paths must be saved as a text file. 
 
 2. remove function
 

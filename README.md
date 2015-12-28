@@ -33,10 +33,10 @@ If they are protected or not found in the path, then the function will raise cor
 Problems:
 
 
-incompleted version of log-writing format : will be patched next version. 
+incompleted version of log-writing format :  will be patched n:ext version. 
 
 Solved:
 
-
+whenever the drive does not exists, it gives bug > Putting the copied folders in to original folders and the error report.
 it cannot perform over the same folders again. > By using hour units, it can be repeated with a delay of second.
 

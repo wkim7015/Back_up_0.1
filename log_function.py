@@ -1,4 +1,4 @@
-#-*- coding: cp949 -*-
+#-*- coding: utf-8 -*-
 from datetime import *
 class text_log():
     

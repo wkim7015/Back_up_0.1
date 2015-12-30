@@ -22,21 +22,13 @@ from mhlib import PATH
 '''
 quota:
 1) copy_function 에서 하드코딩된 "D:\\"  를 제거하고 변수(지역 혹은 멤버,  파라메터 등등)로 대치하세요 ()
-
 2) ", " 다음 항상 공백(space)를 넣으세요 ()
-
 3) get_directory_address 등의 파라메터로 넘어오는 드라이브가 "D"  혹은 "D:" 와 같을때 어찌 되는지 테스트를 추가하고,  해당 함수를 처리하세요 ()
-
 4)TESTcopy_function와 TESTmain 의 copytest 에서 사용된 변수 x,  y,  z 의 명칭을 의미를 알 수 있도록 naming 을 다시 해주세요
-
 5) string,  string1,  string2,  test 의 변수명도 의미를 알 수 있도록 naming 을 다시 해주세요. 통상 assert... 함수에서는 assertEqual(expected,  actual) 처럼 변수명을 지정합니다.
-
 6) 폴더이름과 파일이름이 한글이 섞여있거나 한글로된 것,  특수문자가 섞인것의 테스트도 해주세요.
-
 7) TESTmain ,  test_main 등등에서,  명칭때문에 나중에 문제가 되어 이름을 바꾸어야 할 수도 있을것 같습니다. main ,  최종,  final 등의 단어는 사용에 유의해 주세요.
-
 8) copytest 함수가 2개의 class에서 중복으로 사용됩니다. 하나로 합쳐보세요.
-
 9) 공백의 사용이 일정하지 않습니다. = ( ) 등의 부호에 앞뒤로 사용되는 공백(space)를 규칙있게 통일해주세요. 공백이 2개인곳은 1개로 변경해주세요.
 '''
 
@@ -66,7 +58,7 @@ class copy_folder():
     
     #log = text_log ()
     
-    def __init__(self, directory_path, log_path, drive,flag =0):
+    def __init__(self, directory_path, log_path, drive,flag = 0):
         
         #try: 
             self.path = directory_path
@@ -78,7 +70,7 @@ class copy_folder():
         #except Exception as e:
             #log.error(self.log_path, str(e))
 
-    def copy_function(self ,  path,  log_path, drive,flag):
+    def copy_function(self ,  path,  log_path, drive,flag =0):
         
         #copy_function to copy_folder_function
 
@@ -97,7 +89,7 @@ class copy_folder():
             
             print ""
             
-    def get_directory_address(self, path, drive,flag):
+    def get_directory_address(self, path, drive,flag =0):
         
         #3) get_directory_address 등의 파라메터로 넘어오는 드라이브가 "D"  혹은 "D:" 와 같을때 어찌 되는지 테스트를 추가하고,  해당 함수를 처리하세요 ()
         #> 공통점 : 첫글자는 드라이브.
@@ -133,11 +125,4 @@ class copy_folder():
             else : return ".\\"
         else : return ".\\"
  
-        
-        
-        
-        
-            
-            
-        
-    
+

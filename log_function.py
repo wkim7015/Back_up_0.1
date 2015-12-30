@@ -1,6 +1,4 @@
 #-*- coding: cp949 -*-
-import abc
-
 from datetime import *
 class text_log():
     
@@ -29,8 +27,9 @@ class text_log():
    
 
     def _open_report(self,text):
+        s = unicode_conversion(text)
         
-        return open(text,'a')
+        return open(s,'a')
     
   
     def initial(self,text):
@@ -53,15 +52,11 @@ class text_log():
         ''' all of final writing:   1. whether it is succeeded or not
                                     2. completed time difference
                                     3. completed time
-
         # do we want to implement saving of the data,where the last addressses are saved
         or not?
-
         > completion time:  bring the datetime.now()
-
         > completed time difference: can we bring the data from the main function?
         >> no: Do that on the main function
-
         > succeded or not: may be implmented when divisions of the functions are failed.
         
         '''
@@ -108,7 +103,6 @@ class text_log():
         send the file to bug_database >>not implemented yet. > do we though?
         '''
         report = self._open_report(text)
-        
         #write the errors to the report.
         report.write(unicode_conversion(msg) +"\n")
         
@@ -118,7 +112,7 @@ class text_log():
     def get_drive(cls): # left for just in case.
         return cls.drive
     @staticmethod
-    def isContain(self, text):
+    def isContain(text):
 
         if unicode_conversion('실패') in open(text).read():
             return True
@@ -130,7 +124,3 @@ class text_log():
     
 def unicode_conversion(string):
     return string.decode('cp949').encode('cp949')
-
-   
-
-    

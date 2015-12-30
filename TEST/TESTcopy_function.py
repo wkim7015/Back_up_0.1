@@ -1,4 +1,4 @@
-#-*- coding: cp949 -*-
+#-*- coding: utf-8 -*-
 import unittest
 #from text_log import *
 from copy_function import *

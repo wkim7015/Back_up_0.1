@@ -1,4 +1,4 @@
-#-*- coding: cp949 -*-
+#-*- coding: utf-8 -*-
 import shutil
 import os
 import time

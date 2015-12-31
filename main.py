@@ -25,14 +25,19 @@ import sys
 import gc
 # Input parameters
 
+###################################################################################=================================================
+
 reportName = "Errorreports.txt" #name of the file and the extension for a log
 
-directoryPath = "C:\Users\Hojin\Desktop\\address.txt"
-
-# additional parameters
+directoryPath = "C:\Users\Hojin\Desktop\\address.txt" # the directory path for copying the contents in the folder.
 
 drive = "F:\\"  #where do you want to save( directory path)
-if not os.path.exists(drive[0]+"\\"):
+
+####################################################################################================================================
+
+
+
+if not os.path.exists(drive[0]+":\\"):
     drive = ".\\"
 
 folderNameDate = drive+str(date.today())

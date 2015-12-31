@@ -39,6 +39,12 @@ incompleted version of log-writing format :  will be patched and added with nume
 
 the copy process stops when exception is raised: This can be fixed,only if I have permission to create personal copy_tree method by overriding the exceptions.
 
+Need to estimate the amount of copied contents for security and completion matter.
+
+Need to back up 2 different sites.. perhaps can it be improved by having a definte directory?
+
+SMT?
+
 Solved:
 
 whenever the drive does not exists, it gives bug > Putting the copied folders in to original folders and the error report.

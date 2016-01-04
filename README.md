@@ -41,7 +41,7 @@ the copy process stops when exception is raised: This can be fixed,only if I hav
 
 Need to estimate the amount of copied contents for security and completion matter.
 
-Need to back up 2 different sites.. perhaps can it be improved by having a definte directory?
+Need to back up 2 different sites.. perhaps can it be improved by having a definite directory?
 
 SMT?
 

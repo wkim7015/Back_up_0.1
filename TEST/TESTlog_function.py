@@ -2,10 +2,11 @@
 
 import unittest
 import sys
-sys.path.append("C:\\Users\\Hojin\\Desktop\\TEST\\Back_up_0.1-master") #Re format the path where you store the function.
+import os.path
+sys.path.append(os.path.realpath('..'))
 from log_function import *
 from datetime import *
-import os.path
+
 import string
 import random
 

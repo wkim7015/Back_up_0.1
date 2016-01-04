@@ -5,6 +5,8 @@ All of the test files are uploaded here. TESTmain, the test file for merged func
 The inputs can be found in the front of the functions;All of the inputs is at the very front-lines after declaration of global variables.
 Circumferenced by "#================",They can be easily found and modified as below.
 
+
+Furthermore, before running the files, it is essential to put the test files in the directory where the functions are stored. 
 _1. TESTcopyfunction_
 
 It has two kind of inputs: path1~6 and drive

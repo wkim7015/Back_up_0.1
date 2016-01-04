@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 import unittest
 import sys
-sys.path.append("C:\\Users\\Hojin\\Desktop\\TEST\\Back_up_0.1-master")
+sys.path.append("C:\\Users\\Hojin\\Desktop\\TEST\\Back_up_0.1-master") #Re format the path where you store the function.
 #from text_log import *
 from copy_function import *
 from datetime import date

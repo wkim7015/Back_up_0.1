@@ -12,6 +12,7 @@ import stat
 from distutils.dir_util import copy_tree
 import sys
 import traceback
+sys.path.append("C:\\Users\\Hojin\\Desktop\\TEST\\Back_up_0.1-master")
 import calendar
 import string
 #import markdown

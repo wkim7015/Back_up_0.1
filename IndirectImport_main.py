@@ -17,10 +17,10 @@ from distutils.dir_util import mkpath
 from distutils.errors import DistutilsFileError
 from distutils.file_util import copy_file
 ####### importing files
-from FUNCTIONS.address_function import extract_address
-from FUNCTIONS.copy_function import copy_folder
-from FUNCTIONS.log_function import text_log
-from FUNCTIONS.remove_function import remove_expire
+from FUNCTION.address_function import extract_address
+from FUNCTION.copy_function import copy_folder
+from FUNCTION.log_function import text_log
+from FUNCTION.remove_function import remove_expire
 #import TESTS
 import sys
 import gc

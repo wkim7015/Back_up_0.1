@@ -11,8 +11,8 @@ from datetime import datetime
 import stat
 from distutils.dir_util import copy_tree
 import sys
+sys.path.append(os.path.realpath('..'))
 import traceback
-sys.path.append("C:\\Users\\Hojin\\Desktop\\TEST\\Back_up_0.1-master")
 import calendar
 import string
 #import markdown

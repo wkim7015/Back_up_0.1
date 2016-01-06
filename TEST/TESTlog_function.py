@@ -13,13 +13,13 @@ import random
 ###########################======================================
 # textfile paths. Any name can be used.However, the paths must be precised.
 
-input1 = "C:\\Users\\Hojin\\Desktop\\testfile.txt"
-input3 = "C:\\Users\\Hojin\\Desktop\\될까!!@!!!@!%^$#@%#^%#&.txt"
-input4 = "C:\\Users\\Hojin\\Desktop\\testfiletxt"
-input5 = "C:\\Users\\Hojin\\Desktop\\tEstFile2.tXT"
-input6 = "C:\Users\Hojin\Desktop\\tEstFile3.tXT"
-input2 = "C:\\Users\\Hojin\\Desktop\\될까.txt"
-
+directoryName = os.path.dirname(__file__)
+input1 = directoryName+"\\testfile.txt"
+input3 = directoryName+"\\될까!!@!!!@!%^$#@%#^%#&.txt"
+input4 = directoryName+"\\testfiletxt"
+input5 = directoryName+"\\tEstFile2.tXT"
+input6 = directoryName+"\\tEstFile3.tXT"
+input2 = directoryName+"\\될까.txt"
 
 ###########################======================================
 # text and directory paths to keep logs. Be aware of the directoryPath which needs to be emptied, for simplicity's sake.

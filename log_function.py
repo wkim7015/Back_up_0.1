@@ -23,7 +23,7 @@ class text_log():
 
         
         s = unicode_conversion(text)
-        open(unicode_conversion(s),'w')
+        open(s,'w')
    
 
     def _open_report(self,text):
@@ -123,4 +123,5 @@ class text_log():
  
     
 def unicode_conversion(string):
-    return string.decode('cp949').encode('cp949')
+    return str(unicode(string,"utf-8").encode('cp949'))
+

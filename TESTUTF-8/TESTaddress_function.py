@@ -138,6 +138,11 @@ class TESTget_address(unittest.TestCase):
                      unicode_conversion("C:\Users\Hojin\Desktop\ 새 폴더"),unicode_conversion("C:\Users\Hojin\Desktop\\remove_expire.pyc"), unicode_conversion("D:\Fakefiles.txt") ]
        
         self.assertEqual( testArray, trueArray )
+    
+    @classmethod
+    def tearDownClass(cls):
+        global textFile
+        os.remove(textFile)
 
 
 class TESTmain(unittest.TestCase):
@@ -152,6 +157,9 @@ class TESTmain(unittest.TestCase):
                       unicode_conversion("C:\Users\Hojin\Desktop\ 새 폴더"),"C:\Users\Hojin\Desktop\\remove_expire.pyc", "D:\Fakefiles.txt" ]
         #print trueArray
         self.assertEqual( testArray, trueArray )
+    @classmethod
+    def tearDownClass(cls):
+        os.remove(os.path.dirname(__file__) +"\\test_null_address.txt")
 
 
 if __name__ == '__main__': 

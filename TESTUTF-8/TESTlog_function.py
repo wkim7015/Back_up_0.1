@@ -24,8 +24,10 @@ input2 = directoryName+"\\될까.txt"
 ###########################======================================
 # text and directory paths to keep logs. Be aware of the directoryPath which needs to be emptied, for simplicity's sake.
 
-textPath = "C:\\Users\\Hojin\\Desktop\\테스트파일.txt"
-directoryPath = "C:\Users\Hojin\Desktop\새 폴더 (2)"
+
+textPath = directoryName+"\\테스트파일.txt"
+directoryPath = directoryName+"\\새 폴더 (2)"
+
 
 ###########################======================================
 

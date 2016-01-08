@@ -78,23 +78,7 @@ def unicode_conversion(string):
 
 
 directoryName = os.path.dirname(__file__)
-if not os.path.exists(os.path.dirname(__file__) +"\\test_address.txt"):
-    
-    initialTest = open(os.path.dirname(__file__) +"\\test_address.txt",'a')
-    initialTest.write("C:\Users\Hojin\Desktop\exp02"+"\n")
-    initialTest.write("C:\Users\Hojin\Desktop\exp1"+"\n")
-    initialTest.write(unicode_conversion("C:\Users\Hojin\Desktop\ 새 폴더")+"\n")
-    initialTest.write("C:\Users\Hojin\Desktop\\remove_expire.pyc"+"\n")
-    initialTest.write("D:\Fakefiles.txt"+"\n")
 
-if not os.path.exists(os.path.dirname(__file__) +"\\test_null_address.txt"):
-    
-    initialTestNull = open(os.path.dirname(__file__) +"\\test_null_address.txt",'a')
-    initialTestNull.write(unicode_conversion("C:\Users\Hojin\Desktop\exp02")+"\n")
-    initialTestNull.write(unicode_conversion("C:\Users\Hojin\Desktop\exp1")+"\n")
-    initialTestNull.write( unicode_conversion("C:\Users\Hojin\Desktop\ 새 폴더")+"\n")
-    initialTestNull.write(unicode_conversion("C:\Users\Hojin\Desktop\\remove_expire.pyc")+"\n")
-    initialTestNull.write(unicode_conversion("D:\Fakefiles.txt"))
                     
 ##################################################################==================================================================
 
@@ -113,6 +97,25 @@ trueArray = [ "C:\Users\Hojin\Desktop\exp02","C:\Users\Hojin\Desktop\exp1",
 ###################################################################==================================================================
 
 class TESTget_address(unittest.TestCase):
+       @classmethod    
+       def setUpClass(cls):
+        if not os.path.exists(os.path.dirname(__file__) +"\\test_address.txt"):
+    
+            initialTest = open(os.path.dirname(__file__) +"\\test_address.txt",'a')
+            initialTest.write("C:\Users\Hojin\Desktop\exp02"+"\n")
+            initialTest.write("C:\Users\Hojin\Desktop\exp1"+"\n")
+            initialTest.write(unicode_conversion("C:\Users\Hojin\Desktop\ 새 폴더")+"\n")
+            initialTest.write("C:\Users\Hojin\Desktop\\remove_expire.pyc"+"\n")
+            initialTest.write("D:\Fakefiles.txt"+"\n")
+
+        if not os.path.exists(os.path.dirname(__file__) +"\\test_null_address.txt"):
+            
+            initialTestNull = open(os.path.dirname(__file__) +"\\test_null_address.txt",'a')
+            initialTestNull.write(unicode_conversion("C:\Users\Hojin\Desktop\exp02")+"\n")
+            initialTestNull.write(unicode_conversion("C:\Users\Hojin\Desktop\exp1")+"\n")
+            initialTestNull.write( unicode_conversion("C:\Users\Hojin\Desktop\ 새 폴더")+"\n")
+            initialTestNull.write(unicode_conversion("C:\Users\Hojin\Desktop\\remove_expire.pyc")+"\n")
+            initialTestNull.write(unicode_conversion("D:\Fakefiles.txt"))
 
     def test_get_address(self): #주소를 가져오는지 검사
 

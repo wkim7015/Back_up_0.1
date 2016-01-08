@@ -33,16 +33,35 @@ with the interpreter    >> fixed
 #5) copied_address, from_address, copied_address, test 의 변수명도 의미를 알 수 있도록 naming 을 다시 해주세요. 통상 assert... 함수에서는 assertEqual(expected, actual) 처럼 변수명을 지정합니다.
 #> 완료
 
-#9) 공백의 사용이 일정하지 않습니다. = () 등의 부호에 앞뒤로 사용되는 공백(space)를 규칙있게 통일해주세요. 공백이 2개인곳은 1개로 변경해주세요. >완료 그리고 3번 검사. 
+#9) 공백의 사용이 일정하지 않습니다. = () 등의 부호에 앞뒤로 사용되는 공백(space)를 규칙있게 통일해주세요. 공백이 2개인곳은 1개로 변경해주세요. >완료 그리고 3번 검사.
+def create_dir(f):
+    d = f
+    if not os.path.exists(d):
+        os.makedirs(d)
+
+
+
 def unicode_conversion(string):
     return str(unicode(string,"utf-8").encode('cp949'))
+
+################# Create the files for the test.
+'''1. use isdir. If it returns True, do not create the files.Otherwise, create them into os.path.dirname(__file__)
+   2. Change drive to the os.path.realpath(..), 
+'''
+
+#################
+
 ####################=====================================================
 "INPUTS"
-
-path = "C:\Users\Hojin\Desktop\\backup"
-pathKorean = unicode_conversion("C:\Users\Hojin\Desktop\\테스트1")
-pathSpecial = unicode_conversion("C:\Users\Hojin\Desktop\\테스트1%^&&&^%%$##!#$&&^$#()_+=") 
-pathProtected ="C:\Users\Hojin\Desktop\\protectedtest"
+directoryName = os.path.dirname(__file__)
+path = directoryName +"\\backup"
+create_dir(path)
+pathKorean = unicode_conversion(directoryName +"\\테스트1")
+create_dir(pathKorean)
+pathSpecial = unicode_conversion(directoryName +"\\테스트1%^&&&^%%$##!#$&&^$#()_+=")
+create_dir(pathSpecial)
+pathProtected =directoryName +"\\protectedtest" # impossible to test this part.
+create_dir(pathProtected)
 driveName = "D"
 
 ####################=====================================================

@@ -1,0 +1,26 @@
+[1mdiff --cc TESTUTF-8/TESTcopy_function.py[m
+[1mindex 114bc4c,a255ba1..0000000[m
+[1m--- a/TESTUTF-8/TESTcopy_function.py[m
+[1m+++ b/TESTUTF-8/TESTcopy_function.py[m
+[36m@@@ -168,12 -168,12 +168,21 @@@[m [mclass TESTcopy_function(unittest.TestCa[m
+          global drive[m
+          global driveName[m
+          path = "C:\Users\Hojin\Desktop\\backup\\notexists"[m
+[32m++<<<<<<< HEAD[m
+[32m +        from_address =  copytest(path)[m
+[32m +        test = copy_folder(path, None , driveName).copy_function(path, drive+str(date.today())+"\\"+get_name(path), "d")[m
+[32m +        copied_address = copytest(drive+str(date.today())+"\\"+get_name(path))[m
+[32m +        expected = len(from_address)[m
+[32m +        actual = len(copied_address)[m
+[32m +        self.assertEqual(expected, actual) # 없기때문에 복사 불가능[m
+[32m++=======[m
+[32m+         #from_address =  copytest(path)[m
+[32m+        # test = copy_folder(path, None , driveName).copy_function(path, drive+str(date.today())+"\\"+get_name(path), "d")[m
+[32m+         #copied_address = copytest(drive+str(date.today())+"\\"+get_name(path))[m
+[32m+         #expected = len(from_address)[m
+[32m+         #actual = len(copied_address)[m
+[32m+         #self.assertEqual(expected, actual) # 없기때문에 복사 불가능[m
+[32m++>>>>>>> 4148eca987c2dfe557139d05d9d48cdade0b286e[m
+  [m
+  [m
+  #7) TESTmain , test_main 등등에서, 명칭때문에 나중에 문제가 되어 이름을 바꾸어야 할 수도 있을것 같습니다. main , 최종, final 등의 단어는 사용에 유의해 주세요. >main 을 all 로 번경 완료[m

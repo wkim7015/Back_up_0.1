@@ -98,7 +98,7 @@ trueArray = [ "C:\Users\Hojin\Desktop\exp02","C:\Users\Hojin\Desktop\exp1",
 
 class TESTget_address(unittest.TestCase):
     
-       @classmethod    
+    @classmethod    
     def setUpClass(cls):
         if not os.path.exists(os.path.dirname(__file__) +"\\test_address.txt"):
             initialTest = open(os.path.dirname(__file__) +"\\test_address.txt",'a')

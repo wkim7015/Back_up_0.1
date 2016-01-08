@@ -8,7 +8,7 @@ from log_function import *
 from datetime import *
 import string
 import random
-
+import shutil
 ###########################======================================
 # textfile paths. Any name can be used.However, the paths must be precised.
 
@@ -107,6 +107,15 @@ class TESTmake_report_open_report(unittest.TestCase):
     def test_escapeString(self):
         s = test_log(self.backString)
         self.assertTrue(os.path.isfile(self.backString),msg = "True")
+
+    @classmethod
+    def tearDownClass(cls):
+          os.remove(input4)
+          os.remove(input5)
+          os.remove(unicode_conversion(input2))
+          os.remove(input6)
+          os.remove(input1)
+          os.remove(unicode_conversion(input3))
           
 
 class TESTlog(unittest.TestCase):
@@ -158,6 +167,11 @@ class TESTlog(unittest.TestCase):
                lines = [line for line in open(unicode_conversion(self.path))]
                check_lines=[unicode_conversion("에러입니다?#@!(*&^$@!#%^&\n")]
                self.assertEqual(lines,check_lines)
+
+      @classmethod
+      def tearDownClass(cls):
+            
+            os.remove(unicode_conversion(textPath))
         
 class TESTfinal(unittest.TestCase):
     
@@ -193,7 +207,10 @@ class TESTfinal(unittest.TestCase):
             text.error(self.path, x)
             lines = [line.rstrip("\n") for line in open(unicode_conversion(self.path))]
             check_lines=[x]
-            self.assertEqual(lines,check_lines)  
+            self.assertEqual(lines,check_lines)
+    @classmethod
+    def tearDownClass(cls):
+        shutil.rmtree(unicode(directoryPath,"utf-8").encode('cp949'))
 
 def unicode_conversion(string):
     return str(unicode(string,"utf-8").encode('cp949'))            

@@ -10,11 +10,11 @@
 ## 1. main ##
 
 * This function is to operate all available functions, and write raised errors to an error log, formatted to a txt file.
-* This functions requires three inputs:an error report path,a directory path, and a drive which directory will be stored. The error report paths must be saved as a text file. 
+* This function requires three inputs:an error report path,a directory path, and a drive which directory will be stored. The error report paths must be saved as a text file. 
 
 ##2. remove function ##
 
-* This function is to delete the old back-up files, up to 3 weeks from the current date. If files or directories are protected by admin, it will raise associated error which will be passed to the main.
+* This function is to delete the old back-up files, up to 3 weeks from the current date. If files or directories are protected by admin, it raises associated errors which is passed to the main.
 	
 
 ## 3. log function ##

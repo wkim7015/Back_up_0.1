@@ -1,7 +1,6 @@
 #BACK-UP(V.1.0) 
 
-* This program is a basic light-weighted program which copies
-* a whole given directory in to a specific directory from the input
+* This program is a basic light-weighted program which copies a whole given directory in to a specific directory from the input
 
 * main input :
   1. The text file which have desired paths to copy the directories or files

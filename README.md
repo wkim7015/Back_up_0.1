@@ -41,4 +41,4 @@
 * Solved:
     - whenever the drive does not exists, it gives bug > Putting the copied folders in to original folders and the error report.
     - it cannot perform over the same folders again. > By using hour unit, it can be repeated with a delay of second.
-
+    - Sending email option is attached to alert users whenever the program has started. 

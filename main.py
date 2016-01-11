@@ -9,6 +9,7 @@ from datetime import datetime
 import stat
 from distutils.dir_util import copy_tree
 import sys
+sys.path.append(os.path.realpath('..'))
 import traceback
 import calendar
 import string
@@ -21,12 +22,6 @@ from address_function import extract_address
 from copy_function import copy_folder
 from log_function import text_log
 from remove_function import remove_expire
-#from . import address_function
-#from . import copy_function
-#from . import log_function
-#from . import remove_function
-
-
 
 
 #import TESTS
@@ -55,8 +50,9 @@ if not os.path.exists(drive[0]+":\\"):
     drive = ".\\"
 
 folderNameDate = drive+str(date.today())
-folderNameTime = drive +str(datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
-
+folderNameTime = drive +str(datetime.now().strftime('%Y-%m-%d_%H'))
+print folderNameTime
+print folderNameDate
 '''Garbage checking
 '''
 def dump_garbage():
@@ -75,7 +71,7 @@ if __name__ == "__main__":
     #gc.set_debug(gc.DEBUG_LEAK)
     
 
-
+    errorFlag = 0
     flag = 0
     global directoryPath
     global drive
@@ -86,6 +82,7 @@ if __name__ == "__main__":
     try:
         #need to make the directory before make the text.
         #global reportPath
+        print"x"
         folderName = folderNameDate
         if not os.path.exists(folderName):
             os.makedirs (folderName)
@@ -113,10 +110,10 @@ if __name__ == "__main__":
     except Exception as e:
         
         print str(e)
-        text.failed(reportPath)
-        
+        text = text_log()
+        if not text.finalContain(reportPath):
+            text.failed(reportPath)
         text.error(reportPath,str(e))
-
         #text.final(reportPath)
         #dump_garbage()
 
@@ -129,7 +126,7 @@ if __name__ == "__main__":
         reportPath = folderName +"\\"+reportName
         #dump_garbage()
         if(text.isContain(reportPath) is False):
-            text.success(reportPath)
+                text.success(reportPath)
         text.final(reportPath)
     
         

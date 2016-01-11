@@ -8,13 +8,16 @@ from datetime import datetime
 import stat
 from distutils.dir_util import copy_tree
 import sys
+sys.path.append(os.path.realpath('..'))
 import traceback
 import calendar
 import string
 from distutils.dir_util import mkpath
 from distutils.errors import DistutilsFileError
 from distutils.file_util import copy_file
+from log_function import text_log
 from mhlib import PATH
+
 
 #copy_folder(TEXTlog=None).folder_copy(TEXTdirectory)?
 # TEXTlog is only activated when TEXTlog parameter is given
@@ -60,16 +63,21 @@ class copy_folder():
     
     def __init__(self, directory_path, log_path, drive,flag = 0):
         
-        #try: 
+        
+        try: 
             self.path = directory_path
             self.log_path = log_path
              #Use the txt log. May other classes will be implemented to ask
             #an opinion of the extensions.
             #log.make_report(log_path)>> do that in the main
             self.copy_function(directory_path,  log_path, drive,flag)
-        #except Exception as e:
-            #log.error(self.log_path, str(e))
-
+        except Exception as e:
+            ############================= changed
+            log = text_log()
+            if not log.finalContain(self.log_path):
+                log.failed(self.log_path)
+            log.error(self.log_path,str(e))
+            ############===================
     def copy_function(self ,  path,  log_path, drive,flag =0):
         
         #copy_function to copy_folder_function
@@ -103,7 +111,7 @@ class copy_folder():
         if flag ==0:
             new_directory = propeRdrive+str(date.today()) + "\\" + name
         else:
-            new_directory = propeRdrive+str(datetime.now().strftime('%Y-%m-%d_%H-%M-%S')) + "\\" + name
+            new_directory = propeRdrive+str(datetime.now().strftime('%Y-%m-%d_%H')) + "\\" + name
         if not os.path.exists(new_directory):
             os.makedirs (new_directory)
         else: pass

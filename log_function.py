@@ -27,8 +27,11 @@ class text_log():
    
 
     def _open_report(self,text):
+        ## If there is no given text file (such as "None", ""...), then create a file by itself.
+        ##the address is considered to follow the name. 
         s = unicode_conversion(text)
-        
+        if s == "None":
+            pass
         return open(s,'a')
     
   
@@ -104,7 +107,7 @@ class text_log():
         '''
         report = self._open_report(text)
         #write the errors to the report.
-        report.write(unicode_conversion(msg) +"\n")
+        report.write("ERROR:="+"\n"+unicode_conversion(msg) +"\n")
         
     
     
@@ -114,14 +117,22 @@ class text_log():
     @staticmethod
     def isContain(text):
 
+        if unicode_conversion("ERROR:=") in open(text).read():
+            return True
+        else:
+            return False
+    @staticmethod
+    def finalContain(text):
         if unicode_conversion('실패') in open(text).read():
             return True
         else:
             return False
-
         
  
     
 def unicode_conversion(string):
+    #If the file is None, then return string "None"
+    if string ==None or '':
+        string = "None"
     return str(unicode(string,"utf-8").encode('cp949'))
 

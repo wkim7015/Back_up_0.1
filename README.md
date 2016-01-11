@@ -33,10 +33,10 @@
 ## Problems ##
 
 * incompleted version of log-writing format :  will be patched and added with numerous features on the next version. 
-* the copy process stops when exception is raised: This can be fixed,only if I have permission to create personal copy_tree method by overriding the exceptions.
-* Need to estimate the amount of copied contents for security and completion matter.
-* Need to back up 2 different sites.. perhaps can it be improved by having a definite directory?
-* SMT?
+* the copy process stops when exception is raised: This can be fixed,only if I have permission to create personal copy_tree method by overriding the exceptions. > Don't. 
+* Need to estimate the amount of copied contents for security and completion matter. > implementing.
+* Need to back up 2 different sites.. perhaps can it be improved by having a definite directory? > leave it as an option
+* SMT? >through python or os system?
 * Solved:
     - whenever the drive does not exists, it gives bug > Putting the copied folders in to original folders and the error report.
     - it cannot perform over the same folders again. > By using hour unit, it can be repeated with a delay of second.

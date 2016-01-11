@@ -39,5 +39,5 @@
 * SMT? >through python or os system?
 * Solved:
     - whenever the drive does not exists, it gives bug > Putting the copied folders in to original folders and the error report.
-    - it cannot perform over the same folders again. > By using hour unit, it can be repeated with a delay of second.
+    - it cannot perform over the same folders again. > By using hour unit, it can be repeated after one hour ( or perhaps, two 		      hours?).
     - Sending email option is attached to alert users whenever the program starts 

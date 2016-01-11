@@ -42,6 +42,16 @@ drive = "D:\\"  #where do you want to save( directory path)
 
 
 
+#The below is optional.
+
+
+##email =
+
+##password =
+
+##addresses =
+
+
 ############################################################################==================================================
 
 
@@ -77,6 +87,9 @@ if __name__ == "__main__":
     global drive
     global folderNameDate
     global folderNameTime
+    ##  global email
+    ##  global password
+    ##  global addresses
     reportPath = ''
     folderName = ''
     try:
@@ -92,6 +105,7 @@ if __name__ == "__main__":
             os.makedirs (folderName)
         reportPath = folderName +"\\"+reportName
         text = text_log()
+        ##text.send_email(email,password,addresses)
         text.make_report(reportPath)
         text.initial(reportPath)
         function_address = extract_address()
@@ -128,7 +142,7 @@ if __name__ == "__main__":
         if(text.isContain(reportPath) is False):
                 text.success(reportPath)
         text.final(reportPath)
-    
+        ##text.send_email(email,password,addresses,1) >> need to check the emails.
         
         # may need to check whether below lines are going to 
         #executed, no matter of the errors.

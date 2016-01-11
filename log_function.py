@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 from datetime import *
+import smtplib
 class text_log():
     
 
@@ -127,8 +128,48 @@ class text_log():
             return True
         else:
             return False
+    @staticmethod    
+    def send_email(email,password,addresses,flag = 0):
         
- 
+
+        '''email: the host email
+           password: the password for the host email
+           contents: short paragraphs, explaning the back up has started.
+           addresses:the guest emails
+        '''
+        server = server.SMTP('smtp.gmail.com',587) # or 465
+        server.ehlo()
+        server.starttls()
+        ## login
+        server.login(email,password)
+
+        contents = ""
+
+        path = ''
+        #send the emails
+        path = addresses
+        if flag ==0:
+            while not path is '' and not path is ' ':
+                    path = ((addresses.readline()))
+                    addressResult = self.copy_address(path)
+                    if( addressResult != '' and addressResult != 'None'):
+                        server.sendmail(email,addressResult,unicode_conversion('Subject:백업을 실행합니다:'+date.today())+"\n"+contents)
+        #end
+        else:
+             while not path is '' and not path is ' ':
+                    path = ((addresses.readline()))
+                    addressResult = self.copy_address(path)
+                    if( addressResult != '' and addressResult != 'None'):
+                        server.sendmail(email,addressResult,unicode_conversion('Subject:백업 프로세스를 완료 했습니다:'+date.today())+"\n"+contents)
+        server.quit()    
+            
+    def copy_address(self,path):		# None 과 빈 공간이 있을시에 주소만 받는 함수.
+
+        if  not path == '' and not path is None and not path.isspace():
+            return path.strip() # 바뀜
+        else: return ''
+    
+    
     
 def unicode_conversion(string):
     #If the file is None, then return string "None"

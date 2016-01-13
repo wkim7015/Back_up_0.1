@@ -17,7 +17,10 @@ class text_log():
         '''
         return datetime.now().replace(second=0,microsecond=0)
     
-    
+    def describe(self, msg, text):
+
+        report = self._open_report(text)
+        report.write(unicode_conversion(msg))
     
     def make_report(self,text):
         
@@ -110,8 +113,6 @@ class text_log():
         #write the errors to the report.
         report.write("ERROR:="+"\n"+unicode_conversion(msg) +"\n")
         
-    
-    
     @classmethod  
     def get_drive(cls): # left for just in case.
         return cls.drive

@@ -29,7 +29,7 @@
 * This function is to copy all files in a given directory. 
 * If they are protected or not found in the path, then the function will raise correspond errors.
 
-## 6. automation function ##
+## 6. automaton function ##
 
 * This function is to run main at the given specific times. 
 
@@ -46,4 +46,4 @@
     - it cannot perform over the same folders again. > By using hour unit, it can be repeated after one hour ( or perhaps, two 		      hours?).
     - Sending email option is attached to alert users whenever the program starts 
     - Need to estimate the amount of copied contents for security and completion matter. > implemented as L1(level 1) security check.
-    - Add another parameter to run the script at the specific required time. >>automation file. It is "parameterized"
+    - Add another parameter to run the script at the specific required time. >>automaton file. It is "parameterized"

@@ -81,7 +81,7 @@ class text_log():
                                     
         '''
         report = self._open_report(text)
-        report.write(unicode_conversion("성공여부\t\t**"))
+        report.write(unicode_conversion("\n\n성공여부\t\t**"))
         report.write(unicode_conversion('\t #!!복사 성공!!#'+ "\t:)\n"))
         report.write(unicode_conversion("코멘트\t\t\t\t"))
         report.write("\n")
@@ -97,7 +97,7 @@ class text_log():
         
         '''
         report = self._open_report(text)
-        report.write(unicode_conversion("성공여부\t\t**"))
+        report.write(unicode_conversion("\n\n성공여부\t\t**"))
         report.write(unicode_conversion('\t #!!복사 실패!!#'+ "\tX(\n"))
         report.write(unicode_conversion("코멘트\t\t\t\t"))
         report.write("\n")
@@ -111,7 +111,7 @@ class text_log():
         '''
         report = self._open_report(text)
         #write the errors to the report.
-        report.write("ERROR:="+"\n"+unicode_conversion(msg) +"\n")
+        report.write("\n"+"ERROR:="+"\n"+unicode_conversion(msg) +"\n")
         
     @classmethod  
     def get_drive(cls): # left for just in case.
@@ -125,6 +125,7 @@ class text_log():
             return False
     @staticmethod
     def finalContain(text):
+        #print text
         if unicode_conversion('실패') in open(text).read():
             return True
         else:

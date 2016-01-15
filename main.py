@@ -22,7 +22,10 @@ from address_function import extract_address
 from copy_function import copy_folder
 from log_function import text_log
 from remove_function import remove_expire
-
+from security_function_L1 import security_byte
+# import admin
+#if not admin.isUserAdmin():
+#       admin.runAsAdmin()
 
 #import TESTS
 import sys
@@ -95,7 +98,6 @@ if __name__ == "__main__":
     try:
         #need to make the directory before make the text.
         #global reportPath
-        print"x"
         folderName = folderNameDate
         if not os.path.exists(folderName):
             os.makedirs (folderName)
@@ -118,17 +120,29 @@ if __name__ == "__main__":
         while counter < len(address) and address[counter] is not None:
 
             copy_folder(address[counter], reportPath, drive,flag)
+            newAddress = copy_folder(address[counter], reportPath, drive,flag).get_directory_address(address[counter],drive)
+            ### do it here.=====================================
+            '''address[counter] : the originalDirectory address
+               newDirectory = : get directory address  from the copy folder
+                (path, drive parameters are required) :address[counter],drive)               
+               securityL1 = security_byte()
+               securityL1.file_check(address[counter, newDirectory, reportPath)
+            '''
+            securityL1 = security_byte()
+            securityL1.file_check(address[counter], newAddress, reportPath)
+            
+            
+            ###=================================================
             counter +=1
 
         #dump_garbage()
     except Exception as e:
-        
-        print str(e)
-        text = text_log()
-        if not text.finalContain(reportPath):
-            text.failed(reportPath)
-        text.error(reportPath,str(e))
-        #text.final(reportPath)
+            print str(e)
+            text = text_log()
+            if not text.finalContain(reportPath):
+                text.failed(reportPath)
+            text.error(reportPath,str(e))
+            text.final(reportPath)
         #dump_garbage()
 
     finally:
@@ -140,7 +154,7 @@ if __name__ == "__main__":
         reportPath = folderName +"\\"+reportName
         #dump_garbage()
         if(text.isContain(reportPath) is False):
-                text.success(reportPath)
+                text.success(reportPath)        
         text.final(reportPath)
         ##text.send_email(email,password,addresses,1) >> need to check the emails.
         

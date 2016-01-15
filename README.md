@@ -36,7 +36,6 @@
 * the copy process stops when exception is raised: This can be fixed,only if I have permission to create personal copy_tree method by overriding the exceptions. > Don't. 
 * Need to back up 2 different sites.. perhaps can it be improved by having a definite directory? > leave it as an option
 * SMT? >through python or os system?
-* Add another parameter to run the script at the specific required time.
 * Another log style such as HTML? Tkinter for visualization? > Don't. It is not necessary.
 * Optimization
 * Solved:
@@ -44,3 +43,4 @@
     - it cannot perform over the same folders again. > By using hour unit, it can be repeated after one hour ( or perhaps, two 		      hours?).
     - Sending email option is attached to alert users whenever the program starts 
     - Need to estimate the amount of copied contents for security and completion matter. > implemented as L1(level 1) security check.
+    - Add another parameter to run the script at the specific required time. >>automation file. It is "parameterized"

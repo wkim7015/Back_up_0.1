@@ -36,7 +36,7 @@
 * the copy process stops when exception is raised: This can be fixed,only if I have permission to create personal copy_tree method by overriding the exceptions. > Don't. 
 * Need to back up 2 different sites.. perhaps can it be improved by having a definite directory? > leave it as an option
 * SMT? >through python or os system?
-* Add another parameter to run the script at a specific required time.
+* Add another parameter to run the script at the specific required time.
 * Another log style such as HTML? Tkinter for visualization? > Don't. It is not necessary.
 * Optimization
 * Solved:

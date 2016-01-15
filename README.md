@@ -29,6 +29,9 @@
 * This function is to copy all files in a given directory. 
 * If they are protected or not found in the path, then the function will raise correspond errors.
 
+## 6. automation function ##
+
+* This function is to run main at the given specific times. 
 
 ## Problems ##
 

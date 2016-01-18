@@ -82,7 +82,7 @@ class security_byte():
         difference = list(set(olDfiles)-set(neWfiles))
         if( difference == []):
              for i in range(0, len(olDname)):
-                 constant = os.stat(olDname[i]).st_size-os.stat(neWname[i]).st_size
+                 constant = abs(os.stat(olDname[i]).st_size-os.stat(neWname[i]).st_size)
                  if(constant !=0):
                       log.describe("실패한 파일:\t",text)
                       log.write(olDname[i],text)

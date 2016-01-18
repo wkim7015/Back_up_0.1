@@ -34,21 +34,20 @@ class security_byte():
 
         log = text_log()
         if (Constant2 <1e3):
-            log.describe(str(Constant2 +unicode_conversion("\t바이트\n")),text)
+            log.describe(str(Constant2 +("\t바이트\n")),text)
         elif (1e3<Constant2< 1e6):
-            log.describe(str(Constant2*1e-3) +unicode_conversion("\t킬로바이트\n"),text)
+            log.describe(str(Constant2*1e-3) +("\t킬로바이트\n"),text)
         elif (1e6<Constant2<1e9):
-            log.describe(str(Constant2*1e-6) +unicode_conversion("\t메가바이트\n"),text)
+            log.describe(str(Constant2*1e-6) +u("\t메가바이트\n"),text)
         elif (1e9<Constant2<1e12):
-            log.describe(str(Constant2*1e-9) +unicode_conversion("\t기가바이트\n"),text)    
+            log.describe(str(Constant2*1e-9) +("\t기가바이트\n"),text)    
 
     #Reporting on nominal bytes and other folders which may have discreted.    
     def file_check(self,originalDirectory,
                    newDirectory,text):  # only for directory.
         #if str(e).find("not a directory")  !=-1:
         #        return 1 #flag
-
-        if os.path.isdir(unicode_conversion(originalDirectory)) == False:  #Debugg it
+        if os.path.isdir(originalDirectory) == False:  #Debugg it
             return 1
         ''' return flag when newDirectory or originalDirectory does not exist: can we use the commandline isexist() for this?
         '''
@@ -68,7 +67,6 @@ class security_byte():
 
         olDfilesSize = self.get_size(originalDirectory)
         neWfilesSize = self.get_size(newDirectory)
-
         for i in range(0,len(olDfiles)):
             global totaLfileCounter
             totaLfileCounter = i
@@ -77,30 +75,35 @@ class security_byte():
             global fileCounter
             fileCounter = i
             neWname.append( newDirectory+"\\"+str(neWfiles[i]))
-
         #======================================================================= Process #2
-        log.describe("해당되는 주소:"+str(originalDirectory)+ "\n%%"+"전체 파일 " +str(totaLfileCounter)+"중"+str(fileCounter)+"파일 복사 완료"+"%%\n",text)
+        log.describe("\n\n해당되는 주소:",text)
+        log.write(originalDirectory,text)
+        log.describe("\n%%"+"전체 파일 " +str(len(olDfiles))+"중"+str(len(neWfiles))+"파일 또는 폴더 복사 완료"+"%%\n",text)
         difference = list(set(olDfiles)-set(neWfiles))
-       
-        if( difference == None):
+        if( difference == []):
              for i in range(0, len(olDname)):
                  constant = os.stat(olDname[i]).st_size-os.stat(neWname[i]).st_size
                  if(constant !=0):
-                      log.describe("실패한 파일:\t" + unicode_conversion((originalDirectory[i]))+"\n 잃어버린 바이트 :\t" +loss_byte(constant,text),text)
+                      log.describe("실패한 파일:\t",text)
+                      log.write(olDname[i],text)
+                      log.describe("\n 잃어버린 바이트 :\t",text)
+                      self.loss_byte(constant,text)
+    
         else: 
              for i in range(0,len(difference)):
                   constant = os.stat(originalDirectory+"\\"+str(difference[i])).st_size
                   log.describe("\n\n실패한폴더 또는 파일:\t"+((difference[i]))+"\n",text) #cannot calculate when there is a permission lock on the file. .
                   if(constant !=0):
         #            draw the line.
-                     log.describe(("잃어버린자료 용량 :\t") +loss_byte(constant,log))
-        #            draw the line        
+                     log.describe(("잃어버린자료 용량 :\t"),text)
+                     self.loss_byte(constant,text)
+
         #======================================================================= Termination
 
 def unicode_conversion(string):
     #If the file is None, then return string "None"
     if string ==None or '':
         string = "None"
-    print string
-    return string.decode('utf-8').encode('euc-kr')
+    return str(unicode(string,"utf-8").encode('cp949'))
+    #return string.decode('utf-8','replace').encode('euc-kr','replace')
 

@@ -18,6 +18,26 @@ from distutils.dir_util import mkpath
 from distutils.errors import DistutilsFileError
 from distutils.file_util import copy_file
 ####### importing files
+#-*- coding: utf-8 -*-
+#import libraries
+import shutil
+import os
+import time
+from datetime import timedelta
+from datetime import date
+from datetime import datetime
+import stat
+from distutils.dir_util import copy_tree
+import sys
+sys.path.append(os.path.realpath('..'))
+import traceback
+import calendar
+import string
+#import markdown
+from distutils.dir_util import mkpath
+from distutils.errors import DistutilsFileError
+from distutils.file_util import copy_file
+####### importing files
 from address_function import extract_address
 from copy_function import copy_folder
 from log_function import text_log
@@ -64,8 +84,8 @@ if not os.path.exists(drive[0]+":\\"):
 
 folderNameDate = drive+str(date.today())
 folderNameTime = drive +str(datetime.now().strftime('%Y-%m-%d_%H'))
-print folderNameTime
-print folderNameDate
+#print folderNameTime
+#print folderNameDate
 '''Garbage checking
 '''
 def dump_garbage():
@@ -129,6 +149,8 @@ if __name__ == "__main__":
                securityL1.file_check(address[counter, newDirectory, reportPath)
             '''
             securityL1 = security_byte()
+            #print newAddress
+            #print address[counter]
             securityL1.file_check(address[counter], newAddress, reportPath)
             
             
@@ -137,7 +159,7 @@ if __name__ == "__main__":
 
         #dump_garbage()
     except Exception as e:
-            print str(e)
+            #print str(e)
             text = text_log()
             if not text.finalContain(reportPath):
                 text.failed(reportPath)
@@ -153,8 +175,12 @@ if __name__ == "__main__":
         remove_expire(drive)
         reportPath = folderName +"\\"+reportName
         #dump_garbage()
-        if(text.isContain(reportPath) is False):
-                text.success(reportPath)        
+        if(text.isContain(reportPath) is False and text.byteContain(reportPath) is False):
+                text.success(reportPath)
+        if( text.byteContain(reportPath) is True):
+            if(text.finalContain(reportPath) is False):
+                text.failed(reportPath)
+                
         text.final(reportPath)
         ##text.send_email(email,password,addresses,1) >> need to check the emails.
         

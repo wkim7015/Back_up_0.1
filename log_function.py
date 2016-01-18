@@ -16,11 +16,18 @@ class text_log():
         ''' Find the date in which operation performs
         '''
         return datetime.now().replace(second=0,microsecond=0)
+
+    def write(self,msg,text):
+
+        report = self._open_report(text)
+        report.write(msg)
     
     def describe(self, msg, text):
 
         report = self._open_report(text)
-        report.write(unicode_conversion(msg))
+        #print unicode_conversion(msg)
+        x = str(unicode(msg,"utf-8",'replace').encode('cp949','replace'))
+        report.write(x)
     
     def make_report(self,text):
         
@@ -126,10 +133,18 @@ class text_log():
     @staticmethod
     def finalContain(text):
         #print text
-        if unicode_conversion('실패') in open(text).read():
+        if unicode_conversion('복사 실패') in open(text).read():
             return True
         else:
             return False
+    @staticmethod
+    def byteContain(text):
+        
+        if unicode_conversion('바이트') in open(text).read():
+            return True
+        else:
+            return False
+        
     @staticmethod    
     def send_email(email,password,addresses,flag = 0):
         
@@ -177,5 +192,5 @@ def unicode_conversion(string):
     #If the file is None, then return string "None"
     if string ==None or '':
         string = "None"
-    return str(unicode(string,"utf-8").encode('cp949'))
+    return str(unicode(string,"utf-8",'replace').encode('cp949','replace'))
 

@@ -83,7 +83,9 @@ class security_byte():
         if( difference == []):
              for i in range(0, len(olDname)):
                  constant = abs(os.stat(olDname[i]).st_size-os.stat(neWname[i]).st_size)
-                 if(constant !=0):
+                 if(constant %4096 ==0 and constant != 0):
+                    log.describe("WARNING :=\t"+olDname[i] +"\t의 메타 데이터 ( 데이터 정보) 복사 실패 하였습니다 폴더 찾기가 안되어 있을수 있습니다.\n",text)
+                 if(constant !=0 and constant %4096 != 0):
                       log.describe("실패한 파일:\t",text)
                       log.write(olDname[i],text)
                       log.describe("\n 잃어버린 바이트 :\t",text)

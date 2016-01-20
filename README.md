@@ -47,3 +47,4 @@
     - Sending email option is attached to alert users whenever the program starts 
     - Need to estimate the amount of copied contents for security and completion matter. > implemented as L1(level 1) security check.
     - Add another parameter to run the script at the specific required time. >>automaton file. It is "parameterized"
+    - Need to back up 2 different sites.. perhaps can it be improved by having a definite directory? > Parameterized, to save the space, it is in zip extension.

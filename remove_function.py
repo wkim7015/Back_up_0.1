@@ -43,7 +43,20 @@ class remove_expire():
         referenceValue = timedelta(days = 365) #21 days
         delta = value-referenceValue;#subtract
         return delta; # checked
+        
+    def WritePermission(self,path): # 보험
+        #If there is directory inside, get in, change the permissions.
 
+        os.chmod(path,stat.S_IWRITE)
+
+        for files in os.listdir(path):
+            filePath = os.path.join(path,files)
+
+        if os.path.isdir(filePath):
+            self.WritePermission(filePath) 
+        else:
+            os.chmod(filePath,stat.S_IWRITE)
+    
 
     def folder_removal(self,drive):				# 위 날짜로 부터 각각의 자료들을 없애는 함수
             DRIVE = drive
@@ -55,6 +68,7 @@ class remove_expire():
             for i in self.date_range(referenceDate, beforeDate):
                 if os.path.isdir(DRIVE+str(i)): #checked
                     #4. remove the file
+                   self.WritePermission(DRIVE +str(i))
                    shutil.rmtree(DRIVE+str(i),onerror=self.remove_readonly) #checked.
        
 

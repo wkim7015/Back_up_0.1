@@ -5,6 +5,7 @@ from datetime import date
 from datetime import datetime
 import shutil
 import os
+import stat
 
 
 class remove_expire():

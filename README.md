@@ -41,6 +41,7 @@
 * SMT? >through python or os system?
 * Another log style such as HTML? Tkinter for visualization? > Don't. It is not necessary.
 * Optimization
+* Whenever there is security lock-down, copying and analyze do not perform accordingly. >> Should I override the security or not?
 * Solved:
     - whenever the drive does not exists, it gives bug > Putting the copied folders in to original folders and the error report.
     - it cannot perform over the same folders again. > By using hour unit, it can be repeated after one hour ( or perhaps, two 		      hours?).

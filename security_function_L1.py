@@ -38,7 +38,7 @@ class security_byte():
         elif (1e3<Constant2< 1e6):
             log.describe(str(Constant2*1e-3) +("\t킬로바이트\n"),text)
         elif (1e6<Constant2<1e9):
-            log.describe(str(Constant2*1e-6) +u("\t메가바이트\n"),text)
+            log.describe(str(Constant2*1e-6) +("\t메가바이트\n"),text)
         elif (1e9<Constant2<1e12):
             log.describe(str(Constant2*1e-9) +("\t기가바이트\n"),text)    
 

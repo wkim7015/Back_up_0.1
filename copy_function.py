@@ -77,6 +77,13 @@ class copy_folder():
             if not log.finalContain(self.log_path):
                 log.failed(self.log_path)
             log.error(self.log_path,str(e))
+            ###################################### eRROR LiSTING
+            if ('[Error 5]' in str(e) or 'error listing files' in str(e)):
+                #Error 5
+                log.describe("\n\t 복사나 제거가 불가능  합니다 : 관리자의 권한이 필요합니다.\n\n",log_path)
+            elif('could not delete' in str(e)): 
+                 log.describe("\n\t 복사나 제거 도중 다른 파일에 영향을 끼칠 수 있습니다: 관리자의 권한이 필요합니다.\n\n",log_path)
+            ######################################
             ############===================
     def copy_function(self ,  path,  log_path, drive,flag =0):
         

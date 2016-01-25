@@ -140,7 +140,7 @@ if __name__ == "__main__":
         while counter < len(address) and address[counter] is not None:
 
             copy_folder(address[counter], reportPath, drive,flag)
-            newAddress = copy_folder(address[counter], reportPath, drive,flag).get_directory_address(address[counter],drive)
+            newAddress = copy_folder(address[counter], reportPath, drive,flag).get_directory_address(address[counter],drive,flag)
             ### do it here.=====================================
             '''address[counter] : the originalDirectory address
                newDirectory = : get directory address  from the copy folder
